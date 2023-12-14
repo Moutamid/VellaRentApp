@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
-package com.moutamid.dantlicorp.Admin.Fragments;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,13 +28,7 @@ import com.fxn.stash.Stash;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
-import com.moutamid.dantlicorp.Admin.Adapter.TimesheetAdapter;
-import com.moutamid.dantlicorp.Model.SocialModel;
-import com.moutamid.dantlicorp.Model.TimeSheetModel;
-import com.moutamid.dantlicorp.Model.UserModel;
-import com.moutamid.dantlicorp.R;
-import com.moutamid.dantlicorp.helper.Config;
-import com.moutamid.dantlicorp.helper.Constants;
+import com.moutamid.vellarentapp.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,22 +49,22 @@ public class ProfileFragment extends Fragment {
         email = view.findViewById(R.id.email);
         phone_number = view.findViewById(R.id.phone_number);
         userID = Stash.getString("userID");
-        Constants.UserReference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                UserModel userNew = snapshot.getValue(UserModel.class);
-                name.setText(userNew.getName());
-                dob.setText(userNew.dob);
-                email.setText(userNew.email);
-                phone_number.setText(userNew.phone_number);
-                Glide.with(getContext()).load(userNew.image_url).into(profile_img);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+//        Constants.UserReference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                UserModel userNew = snapshot.getValue(UserModel.class);
+//                name.setText(userNew.getName());
+//                dob.setText(userNew.dob);
+//                email.setText(userNew.email);
+//                phone_number.setText(userNew.phone_number);
+//                Glide.with(getContext()).load(userNew.image_url).into(profile_img);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
 
         return view;
     }

@@ -57,7 +57,7 @@ public class Config extends Activity {
     public static final String TIME = "hh:mm aa";
     public static final String DATE = "dd MMM";
     public static String favourite = "Favourite";
-    public static String villa = "Villa";
+    public static String villa = "Villas";
     public static String currentModel = "CurrentModel";
     public static Dialog lodingbar;
 

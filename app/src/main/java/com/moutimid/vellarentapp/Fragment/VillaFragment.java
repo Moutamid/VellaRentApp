@@ -29,6 +29,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.moutamid.vellarentapp.R;
 import com.moutimid.vellarentapp.activities.Home.MapActivity;
+import com.moutimid.vellarentapp.adapter.AllVillaAdapter;
+import com.moutimid.vellarentapp.helper.Constants;
 import com.moutimid.vellarentapp.model.LocationModel;
 import com.moutimid.vellarentapp.model.VillaModel;
 import com.moutimid.vellarentapp.helper.Config;
@@ -40,7 +42,7 @@ public class VillaFragment extends Fragment {
 
     RecyclerView content_rcv;
     public List<VillaModel> productModelList = new ArrayList<>();
-    AllResturantsAdapter herbsAdapter;
+    AllVillaAdapter herbsAdapter;
 
     EditText search;
     TextView no_text;
@@ -61,7 +63,7 @@ public class VillaFragment extends Fragment {
         no_text = view.findViewById(R.id.no_text);
         mic = view.findViewById(R.id.mic);
         content_rcv.setLayoutManager(new GridLayoutManager(getContext(), 1));
-        herbsAdapter = new AllResturantsAdapter(getContext(), productModelList);
+        herbsAdapter = new AllVillaAdapter(getContext(), productModelList);
         content_rcv.setAdapter(herbsAdapter);
         map.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,8 +111,6 @@ public class VillaFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable editable) {
                 filter(editable.toString());
-
-
             }
         });
 
@@ -126,15 +126,15 @@ public class VillaFragment extends Fragment {
 
     private void getProducts() {
         Config.showProgressDialog(getContext());
-        Config.databaseReference().child(Config.villa).addValueEventListener(new ValueEventListener() {
+        Constants.databaseReference().child(Config.villa).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 productModelList.clear();
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    VillaModel herbsModel = ds.getValue(VillaModel.class);
-                    productModelList.add(herbsModel);
-                }
-                herbsAdapter.notifyDataSetChanged();
+//                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+//                    VillaModel herbsModel = ds.getValue(VillaModel.class);
+//                    productModelList.add(herbsModel);
+//                }
+//                herbsAdapter.notifyDataSetChanged();
             }
 
 
@@ -145,7 +145,7 @@ public class VillaFragment extends Fragment {
 
 
         });
-        Config.databaseReference().child("Locations").addValueEventListener(new ValueEventListener() {
+        Constants.databaseReference().child("Locations").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {

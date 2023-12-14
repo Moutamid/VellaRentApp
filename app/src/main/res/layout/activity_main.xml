@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1F1F1"
-    tools:context=".Activity.MainActivity">
+    android:background="#F1F1F1">
 
 
 
@@ -30,11 +29,11 @@
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="start|bottom"
             android:background="@color/white"
-            app:circleColor="@color/purple_200"
-            app:itemIconTint="@color/purple_200"
+            app:circleColor="@color/app_color"
+            app:itemIconTint="@color/app_color"
             android:backgroundTint="@color/white"
-            app:itemRippleColor="@color/purple_200"
-            app:itemTextColor="@color/purple_200"
+            app:itemRippleColor="@color/app_color"
+            app:itemTextColor="@color/app_color"
             app:menu="@menu/bottom_menu" />
 
     </com.google.android.material.bottomappbar.BottomAppBar>

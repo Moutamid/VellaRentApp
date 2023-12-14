@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.fxn.stash.Stash;
 import com.moutamid.vellarentapp.R;
+import com.moutimid.vellarentapp.activities.Home.VillaDetailsActivity;
 import com.moutimid.vellarentapp.helper.Config;
 import com.moutimid.vellarentapp.model.VillaModel;
 
@@ -35,7 +36,7 @@ public class AllVillaAdapter extends RecyclerView.Adapter<AllVillaAdapter.Galler
     @Override
     public GalleryPhotosViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.all_villas, parent, false);
+        View view = inflater.inflate(R.layout.all_villa, parent, false);
         return new GalleryPhotosViewHolder(view);
     }
     public void filterList(ArrayList<VillaModel> filterlist) {
@@ -50,11 +51,10 @@ public class AllVillaAdapter extends RecyclerView.Adapter<AllVillaAdapter.Galler
         holder.resturant_discription.setText(VillaModel.getShort_description());
         Glide.with(ctx).load(VillaModel.getImage_url()).into(holder.image);
         holder.itemView.setOnClickListener(view -> {
-            Intent intent = new Intent(ctx, RestaurantsDetailsActivity.class);
+            Intent intent = new Intent(ctx, VillaDetailsActivity.class);
             Stash.put(Config.currentModel, VillaModel);
             ctx.startActivity(intent);
         });
-
     }
 
     @Override

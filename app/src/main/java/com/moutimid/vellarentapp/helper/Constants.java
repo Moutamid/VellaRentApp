@@ -21,7 +21,7 @@ public class Constants {
     }
 
     public static DatabaseReference databaseReference() {
-        DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("DantliCorp");
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("RentApp");
         db.keepSynced(true);
         return db;
     }
