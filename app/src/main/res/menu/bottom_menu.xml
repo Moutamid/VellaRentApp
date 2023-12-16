@@ -18,6 +18,7 @@
 
     <item
         android:id="@+id/settings"
+        android:visible="false"
         android:icon="@drawable/baseline_settings_suggest_24"
         android:title="Settings" />
 

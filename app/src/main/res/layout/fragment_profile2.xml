@@ -20,7 +20,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:fontFamily="@font/lexend_extra_bold"
+                    android:text="Profile"
+                    android:textColor="@color/black"
+                    android:textSize="35dp" />
                 <RelativeLayout
                     android:id="@+id/img_lyt"
                     android:layout_width="140dp"
@@ -32,8 +40,8 @@
 
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="210dp"
-                        android:layout_height="210dp"
+                        android:layout_width="250dp"
+                        android:layout_height="250dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="12dp"
                         app:cardCornerRadius="12dp"
@@ -72,7 +80,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_regular"
+                        android:fontFamily="@font/lexend_semi_bold"
                         android:hint="Name"
                         android:padding="12dp"
                         android:textColor="@color/textColor"
@@ -85,11 +93,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/poppins_regular"
+                        android:fontFamily="@font/lexend_light"
                         android:padding="12dp"
                         android:textColor="#615454"
 
-                        android:textSize="10dp" />
+                        android:textSize="12dp" />
 
 
                 </LinearLayout>
@@ -105,7 +113,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_regular"
+                        android:fontFamily="@font/lexend_semi_bold"
                         android:hint="DOB"
                         android:padding="12dp"
                         android:textColor="@color/textColor"
@@ -118,10 +126,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/poppins_regular"
+                        android:fontFamily="@font/lexend_light"
                         android:padding="12dp"
-                        android:textColor="#6E6B6B"
-                        android:textSize="10dp" />
+                        android:textColor="#615454"
+
+                        android:textSize="12dp" />
 
 
                 </LinearLayout>
@@ -137,7 +146,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_regular"
+                        android:fontFamily="@font/lexend_semi_bold"
                         android:hint="Email"
                         android:padding="12dp"
                         android:textColor="@color/textColor"
@@ -150,10 +159,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/poppins_regular"
+                        android:fontFamily="@font/lexend_light"
                         android:padding="12dp"
-                        android:textColor="#6E6B6B"
-                        android:textSize="10dp" />
+                        android:textColor="#615454"
+
+                        android:textSize="12dp" />
 
 
                 </LinearLayout>
@@ -169,7 +179,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_regular"
+                        android:fontFamily="@font/lexend_semi_bold"
                         android:hint="Phone Number"
                         android:padding="12dp"
                         android:textColor="@color/textColor"
@@ -182,10 +192,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/poppins_regular"
+                        android:fontFamily="@font/lexend_light"
                         android:padding="12dp"
-                        android:textColor="#6E6B6B"
-                        android:textSize="10dp" />
+                        android:textColor="#615454"
+
+                        android:textSize="12dp" />
 
 
                 </LinearLayout>
@@ -208,7 +219,21 @@
                         android:textSize="20dp"
                         android:layout_centerInParent="true"/>
                 </RelativeLayout>
-
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/logout"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="35dp"
+                    android:backgroundTint="@color/app_color"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_bg"
+                    android:text="Logout"
+                    android:textColor="@color/white"
+                    />
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>

@@ -23,8 +23,18 @@
                 android:layout_gravity="center_vertical"
                 android:layout_margin="15dp"
                 android:onClick="login"
+                android:tint="@color/app_color"
                 android:src="@drawable/ic_back" />
 
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lexend_extra_bold"
+                android:text="Signup"
+                android:layout_marginTop="9dp"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
 
         </LinearLayout>
 

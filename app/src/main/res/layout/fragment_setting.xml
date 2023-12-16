@@ -101,7 +101,7 @@
 <!--                android:layout_toRightOf="@+id/villa"-->
 <!--                android:fontFamily="@font/lexend_medium"-->
 <!--                android:textColor="@color/black"-->
-<!--                android:text="Favourite Resturants" />-->
+<!--                android:text="Favourite villas" />-->
 
 <!--&lt;!&ndash;            <View&ndash;&gt;-->
 <!--&lt;!&ndash;                android:id="@+id/view10"&ndash;&gt;-->

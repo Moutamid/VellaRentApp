@@ -17,6 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:visibility="gone"
             android:layout_marginEnd="20dp"
             android:src="@drawable/baseline_map_24" />
 
@@ -26,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:fontFamily="@font/lexend_extra_bold"
-            android:text="Restaurants"
+            android:text="Villas"
             android:textColor="@color/black"
             android:textSize="35dp" />
     </androidx.appcompat.widget.Toolbar>
@@ -34,7 +35,7 @@
     <RelativeLayout
         android:id="@+id/search_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_below="@+id/toolbar_"
         android:elevation="5dp"
 
@@ -46,15 +47,13 @@
             android:layout_height="50dp"
             android:layout_marginStart="23dp"
             android:layout_marginLeft="23dp"
-            android:layout_marginTop="23dp"
             android:layout_marginEnd="23dp"
             android:layout_marginRight="23dp"
-            android:layout_marginBottom="23dp"
             android:background="@drawable/edit_bg"
             android:backgroundTint="@color/white"
             android:drawableStart="@drawable/baseline_youtube_searched_for_24"
             android:fontFamily="@font/calibri"
-            android:hint="  Search for Halal Restaurants"
+            android:hint="  Search for desired Villas"
             android:padding="15dp"
             android:textColor="@color/black"
             android:textColorHint="@color/grey"
@@ -66,16 +65,15 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginStart="37dp"
-            android:layout_marginTop="37dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="37dp"
             android:layout_marginRight="37dp"
-            android:layout_marginBottom="37dp"
             android:src="@drawable/baseline_mic_24" />
     </RelativeLayout>
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_below="@+id/search_bar">
 
         <RelativeLayout
@@ -85,7 +83,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/imageView1"
                 android:layout_width="wrap_content"
-
+android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 app:cardCornerRadius="20dp">
@@ -106,13 +104,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/imageView1"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp" />
 
             <TextView
                 android:id="@+id/no_text"
@@ -122,11 +117,11 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:paddingLeft="6dp"
-                android:text="No Restaurant Found"
+                android:text="No Villa Found"
+                android:visibility="gone"
                 android:textColor="#9C9191"
                 android:textSize="18dp"
-                android:textStyle="bold"
-                android:visibility="gone" />
+                android:textStyle="bold" />
 
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>

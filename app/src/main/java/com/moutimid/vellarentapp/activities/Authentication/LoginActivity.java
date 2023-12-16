@@ -22,9 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.moutamid.vellarentapp.R;
 import com.moutimid.vellarentapp.MainActivity;
-import com.moutimid.vellarentapp.model.UserModel;
-import com.moutimid.vellarentapp.helper.Config;
 import com.moutimid.vellarentapp.helper.Constants;
+import com.moutimid.vellarentapp.model.UserModel;
 
 import java.util.Objects;
 
@@ -48,7 +47,9 @@ public class LoginActivity extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         initComponent();
         firebaseAuth = FirebaseAuth.getInstance();
-
+        if (firebaseAuth.getCurrentUser() != null) {
+            startActivity(new Intent(this, MainActivity.class));
+        }
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

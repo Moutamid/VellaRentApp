@@ -315,39 +315,8 @@ public class Config extends Activity {
         return new SimpleDateFormat(DATE, Locale.getDefault()).format(date);
     }
 
-    public static void sendFCMPush(Context context) {
-        JSONObject notification = new JSONObject();
-        JSONObject notifcationBody = new JSONObject();
-        try {
-            notifcationBody.put("title", "DANTLI CORP");
-            notifcationBody.put("message", "Welcome to the Team");
-            notification.put("to", "/topics/" + "general");
-            notification.put("data", notifcationBody);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.POST, Constants.NOTIFICATIONAPIURL, notification,
-                response -> {
-                },
-                error -> {
-                }) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("Authorization", "key=" + Constants.ServerKey);
-                params.put("Content-Type", "application/json");
-                return params;
-            }
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
-        int socketTimeout = 1000 * 60;// 60 seconds
-        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-        jsObjRequest.setRetryPolicy(policy);
-        requestQueue.add(jsObjRequest);
-    }
     public static void checkApp(Activity activity) {
-        String appName = "DANTLI CORP";
+        String appName = "RentApp";
 
         new Thread(() -> {
             URL google = null;

@@ -23,7 +23,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.fxn.stash.Stash;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -32,8 +31,8 @@ import com.moutimid.vellarentapp.activities.Home.MapActivity;
 import com.moutimid.vellarentapp.adapter.AllVillaAdapter;
 import com.moutimid.vellarentapp.helper.Constants;
 import com.moutimid.vellarentapp.model.LocationModel;
-import com.moutimid.vellarentapp.model.VillaModel;
 import com.moutimid.vellarentapp.helper.Config;
+import com.moutimid.vellarentapp.model.Villa;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +40,7 @@ import java.util.List;
 public class VillaFragment extends Fragment {
 
     RecyclerView content_rcv;
-    public List<VillaModel> productModelList = new ArrayList<>();
+    public List<Villa> productModelList = new ArrayList<>();
     AllVillaAdapter herbsAdapter;
 
     EditText search;
@@ -50,8 +49,6 @@ public class VillaFragment extends Fragment {
     String lcode = "en-US";
     ImageView map;
     ArrayList<LocationModel> userArrayList = new ArrayList<>();
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -125,53 +122,53 @@ public class VillaFragment extends Fragment {
 
 
     private void getProducts() {
-        Config.showProgressDialog(getContext());
+//        Config.showProgressDialog(getContext());
         Constants.databaseReference().child(Config.villa).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 productModelList.clear();
-//                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-//                    VillaModel herbsModel = ds.getValue(VillaModel.class);
-//                    productModelList.add(herbsModel);
-//                }
-//                herbsAdapter.notifyDataSetChanged();
-            }
-
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-
-
-        });
-        Constants.databaseReference().child("Locations").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    VillaModel herbsModel1 = ds.getValue(VillaModel.class);
-                    userArrayList.add(new LocationModel(herbsModel1.getLat(), herbsModel1.getLng(), herbsModel1.getName()));
-                    Config.dismissProgressDialog();
-
+                    Villa herbsModel = ds.getValue(Villa.class);
+                    productModelList.add(herbsModel);
                 }
-                Stash.put("Locations", userArrayList);
+                herbsAdapter.notifyDataSetChanged();
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+
+
         });
-        Config.dismissProgressDialog();
+//        Constants.databaseReference().child("Locations").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+//                    Villa herbsModel1 = ds.getValue(Villa.class);
+//                    userArrayList.add(new LocationModel(herbsModel1.getLat(), herbsModel1.getLng(), herbsModel1.getName()));
+//                    Config.dismissProgressDialog();
+//
+//                }
+//                Stash.put("Locations", userArrayList);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//        Config.dismissProgressDialog();
 
     }
 
     private void filter(String text) {
         // creating a new array list to filter our data.
-        ArrayList<VillaModel> filteredlist = new ArrayList<VillaModel>();
+        ArrayList<Villa> filteredlist = new ArrayList<Villa>();
 
         // running a for loop to compare elements.
-        for (VillaModel item : productModelList) {
+        for (Villa item : productModelList) {
             if (item.getName().toLowerCase().contains(text.toLowerCase())) {
                 filteredlist.add(item);
             }

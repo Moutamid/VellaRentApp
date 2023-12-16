@@ -13,7 +13,7 @@
 //
 //import com.airbnb.lottie.BuildConfig;
 //import com.fxn.stash.Stash;
-//import com.moutamid.halalfoodfinder.Model.VillaModel;
+//import com.moutamid.halalfoodfinder.Model.Villa;
 //import com.moutamid.halalfoodfinder.R;
 //import com.moutamid.halalfoodfinder.helper.Config;
 //

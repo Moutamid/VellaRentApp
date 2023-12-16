@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,19 +16,22 @@ import com.bumptech.glide.Glide;
 import com.fxn.stash.Stash;
 import com.moutamid.vellarentapp.R;
 import com.moutimid.vellarentapp.activities.Home.VillaDetailsActivity;
+import com.moutimid.vellarentapp.dailogues.CalenderDialogClass;
 import com.moutimid.vellarentapp.helper.Config;
-import com.moutimid.vellarentapp.model.VillaModel;
+import com.moutimid.vellarentapp.model.Villa;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AllVillaAdapter extends RecyclerView.Adapter<AllVillaAdapter.GalleryPhotosViewHolder> {
 
 
     Context ctx;
-    List<VillaModel> productModels;
+    List<Villa> productModels;
 
-    public AllVillaAdapter(Context ctx, List<VillaModel> productModels) {
+    public AllVillaAdapter(Context ctx, List<Villa> productModels) {
         this.ctx = ctx;
         this.productModels = productModels;
     }
@@ -39,22 +43,43 @@ public class AllVillaAdapter extends RecyclerView.Adapter<AllVillaAdapter.Galler
         View view = inflater.inflate(R.layout.all_villa, parent, false);
         return new GalleryPhotosViewHolder(view);
     }
-    public void filterList(ArrayList<VillaModel> filterlist) {
 
+    public void filterList(ArrayList<Villa> filterlist) {
         productModels = filterlist;
         notifyDataSetChanged();
     }
+
     @Override
     public void onBindViewHolder(@NonNull GalleryPhotosViewHolder holder, final int position) {
-        VillaModel VillaModel = productModels.get(position);
-        holder.resturant_name.setText(VillaModel.getName());
-        holder.resturant_discription.setText(VillaModel.getShort_description());
-        Glide.with(ctx).load(VillaModel.getImage_url()).into(holder.image);
-        holder.itemView.setOnClickListener(view -> {
-            Intent intent = new Intent(ctx, VillaDetailsActivity.class);
-            Stash.put(Config.currentModel, VillaModel);
-            ctx.startActivity(intent);
+        Villa villa = productModels.get(position);
+        holder.villa_name.setText(villa.getName());
+        holder.user_name.setText(villa.getUser_name());
+        holder.villa_discription.setText(villa.getBill() + " $/month");
+        if (villa.isBills_included()) {
+            holder.bill_included.setText("Included");
+        } else {
+            holder.bill_included.setText("Not Included");
+
+        }
+        Glide.with(ctx).load(villa.getImage()).into(holder.image);
+        Glide.with(ctx).load(villa.getUser_image()).into(holder.user_image);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (position == 0)
+                {
+                    Stash.put(Config.currentModel, villa);
+                    CalenderDialogClass cdd = new CalenderDialogClass(ctx);
+                    cdd.show();
+                }
+                else
+                {
+                    Toast.makeText(ctx, "Not available yet", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
+
     }
 
     @Override
@@ -64,14 +89,19 @@ public class AllVillaAdapter extends RecyclerView.Adapter<AllVillaAdapter.Galler
 
     public class GalleryPhotosViewHolder extends RecyclerView.ViewHolder {
 
-        TextView resturant_discription, resturant_name;
+        TextView villa_discription, villa_name, bill_included, user_name;
         ImageView image;
+        CircleImageView user_image;
+
 
         public GalleryPhotosViewHolder(@NonNull View itemView) {
             super(itemView);
-            resturant_discription = itemView.findViewById(R.id.resturant_discription);
-            resturant_name = itemView.findViewById(R.id.resturant_name);
+            villa_discription = itemView.findViewById(R.id.bill);
+            villa_name = itemView.findViewById(R.id.villa_name);
             image = itemView.findViewById(R.id.image);
+            bill_included = itemView.findViewById(R.id.bill_included);
+            user_name = itemView.findViewById(R.id.user_name);
+            user_image = itemView.findViewById(R.id.user_image);
 
         }
     }
