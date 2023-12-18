@@ -13,7 +13,7 @@ public class Villa {
     private int roomType;
     private int bill;
     boolean bills_included;
-    String image, user_image, user_name;
+    String image, userImage, userName;
     String key;
     private double lat;
     private double lng;
@@ -76,12 +76,13 @@ public class Villa {
         return bills_included;
     }
 
-    public String getUser_image() {
-        return user_image;
+    public String getUserImage() {
+
+        return userImage;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getUserName() {
+        return userName;
     }
 
     public String getKey() {

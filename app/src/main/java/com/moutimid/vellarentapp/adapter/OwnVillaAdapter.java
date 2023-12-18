@@ -52,7 +52,7 @@ public class OwnVillaAdapter extends RecyclerView.Adapter<OwnVillaAdapter.Galler
     public void onBindViewHolder(@NonNull GalleryPhotosViewHolder holder, final int position) {
         Villa villa = productModels.get(position);
         holder.villa_name.setText(villa.getName());
-        holder.user_name.setText(villa.getUser_name());
+        holder.user_name.setText(villa.getUserName());
         holder.villa_discription.setText(villa.getBill() + " $/month");
         if (villa.isBills_included()) {
             holder.bill_included.setText("Included");
@@ -61,6 +61,7 @@ public class OwnVillaAdapter extends RecyclerView.Adapter<OwnVillaAdapter.Galler
 
         }
         Glide.with(ctx).load(villa.getImage()).into(holder.image);
+        Glide.with(ctx).load(villa.getUserImage()).into(holder.user_image);
 
     }
 
