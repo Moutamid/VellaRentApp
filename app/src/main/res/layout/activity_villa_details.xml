@@ -110,6 +110,7 @@
             android:padding="15dp">
 
             <LinearLayout
+                android:id="@+id/room_type_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp">
@@ -128,11 +129,12 @@
                     android:layout_margin="10dp"
                     android:fontFamily="@font/lexend_medium"
                     android:gravity="center"
-                    android:text="Private Room"
+                    android:text="Private Rooms"
                     android:textColor="@color/black" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/room_area_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
@@ -158,6 +160,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/no_of_bedroom_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
@@ -183,6 +186,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/no_of_bathroom_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
@@ -209,6 +213,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/description_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/address"
@@ -234,106 +239,9 @@
             android:fontFamily="@font/lexend_light"
             android:textSize="14dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/address"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/lexend_semi_bold"
-            android:text="Property Details"
-            android:textColor="@color/black"
-            android:textSize="18dp" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/address"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="@font/lexend_medium"
-            android:text="Bathrooms"
-            android:textColor="@color/black"
-            android:textSize="14dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/address"
-            android:layout_marginStart="17dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="@font/lexend_light"
-            android:text="2 full bathroom"
-            android:textColor="@color/black"
-            android:textSize="14dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/address"
-            android:layout_marginStart="17dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="@font/lexend_light"
-            android:text="1 toilet"
-            android:textColor="@color/black"
-            android:textSize="14dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/address"
-            android:layout_marginStart="17dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/lexend_light"
-            android:text="1 steam shower"
-            android:textColor="@color/black"
-            android:textSize="14dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/address"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="@font/lexend_medium"
-            android:text="Bedrooms"
-            android:textColor="@color/black"
-            android:textSize="14dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/address"
-            android:layout_marginStart="17dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="@font/lexend_light"
-            android:text="2 single"
-            android:textColor="@color/black"
-            android:textSize="14dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/address"
-            android:layout_marginStart="17dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="@font/lexend_light"
-            android:text="1 double"
-            android:textColor="@color/black"
-            android:textSize="14dp" />
-        <TextView
-            android:id="@+id/availabillity"
+            android:id="@+id/availability"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/address"
@@ -362,7 +270,50 @@
             android:textColor="#000000"
 
             android:textSize="15dp" />
+
         <TextView
+            android:id="@+id/house_rules"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/address"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/lexend_semi_bold"
+            android:text="House Rules"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/pet_friendly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/address"
+            android:layout_marginStart="17dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/lexend_light"
+            android:text="Pet Friendly"
+            android:textColor="@color/black"
+
+            android:textSize="14dp" />
+        <TextView
+            android:id="@+id/smoke_friendly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/address"
+            android:layout_marginStart="17dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/lexend_light"
+            android:text="Smoke Friendly"
+            android:textColor="@color/black"
+
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/property_amenities_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/address"
@@ -374,16 +325,17 @@
             android:text="Property Ameneities"
             android:textColor="@color/black"
             android:textSize="18dp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:background="@drawable/btn_bg"
             android:backgroundTint="#0FFFFFFF"
-            android:orientation="vertical"
-           >
+            android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/dryer_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp">
@@ -406,6 +358,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/furnished_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
@@ -430,6 +383,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/equipped_kitchen_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
@@ -454,6 +408,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/garden_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
@@ -477,6 +432,7 @@
                     android:textColor="@color/black" />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/heater_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
@@ -500,6 +456,7 @@
                     android:textColor="@color/black" />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/tv_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
@@ -523,6 +480,7 @@
                     android:textColor="@color/black" />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/wifi_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
@@ -537,6 +495,7 @@
                     app:tint="@color/black" />
 
                 <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -545,8 +504,88 @@
                     android:text="WIFI"
                     android:textColor="@color/black" />
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/parking_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+
+                >
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/parking"
+                    app:tint="@color/black" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/lexend_medium"
+                    android:gravity="center"
+                    android:text="Parking"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/machine_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+
+                >
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/laundry_machine"
+                    app:tint="@color/black" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/lexend_medium"
+                    android:gravity="center"
+                    android:text="Washing Machine"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/air_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+
+                >
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/air_conditioner"
+                    app:tint="@color/black" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/lexend_medium"
+                    android:gravity="center"
+                    android:text="Air Conditioning"
+                    android:textColor="@color/black" />
+            </LinearLayout>
         </LinearLayout>
+
         <TextView
+            android:id="@+id/price_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/address"
@@ -573,6 +612,7 @@
             android:textSize="14dp" />
 
         <TextView
+            android:id="@+id/monthly_rent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/address"
@@ -586,6 +626,7 @@
 
 
         <TextView
+            android:id="@+id/bills"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/address"
@@ -599,6 +640,7 @@
             android:textSize="14dp" />
 
         <TextView
+            android:id="@+id/included"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/address"
@@ -626,6 +668,7 @@
             android:textColor="@color/black"
             android:textSize="14dp" />
         <TextView
+            android:id="@+id/location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/address"
@@ -638,6 +681,7 @@
 
             android:textSize="14dp" />
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/request_button"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginBottom="35dp"
@@ -647,10 +691,10 @@
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
             android:layout_weight="1"
+            android:onClick="booking"
             android:background="@drawable/btn_bg"
-            android:text="Request for Rent"
-            android:textColor="@color/white"
-             />
+            android:text="Request for Booking"
+            android:textColor="@color/white" />
 
 
     </LinearLayout>

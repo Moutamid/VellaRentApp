@@ -1,7 +1,6 @@
 package com.moutimid.vellarentapp.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.fxn.stash.Stash;
 import com.moutamid.vellarentapp.R;
-import com.moutimid.vellarentapp.activities.Home.VillaDetailsActivity;
 import com.moutimid.vellarentapp.dailogues.CalenderDialogClass;
 import com.moutimid.vellarentapp.helper.Config;
 import com.moutimid.vellarentapp.model.Villa;
@@ -67,15 +65,14 @@ public class AllVillaAdapter extends RecyclerView.Adapter<AllVillaAdapter.Galler
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (position == 0)
-                {
+                if (villa.available.equals("available")) {
                     Stash.put(Config.currentModel, villa);
                     CalenderDialogClass cdd = new CalenderDialogClass(ctx);
                     cdd.show();
                 }
                 else
                 {
-                    Toast.makeText(ctx, "Not available yet", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ctx, "Villa is not available yet", Toast.LENGTH_SHORT).show();
                 }
             }
         });

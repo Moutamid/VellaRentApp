@@ -23,15 +23,19 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.fxn.stash.Stash;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.moutamid.vellarentapp.R;
 import com.moutimid.vellarentapp.activities.Home.MapActivity;
 import com.moutimid.vellarentapp.adapter.AllVillaAdapter;
 import com.moutimid.vellarentapp.helper.Constants;
+import com.moutimid.vellarentapp.model.HouseRules;
 import com.moutimid.vellarentapp.model.LocationModel;
 import com.moutimid.vellarentapp.helper.Config;
+import com.moutimid.vellarentapp.model.PropertyAmenities;
 import com.moutimid.vellarentapp.model.Villa;
 
 import java.util.ArrayList;
@@ -129,6 +133,16 @@ public class VillaFragment extends Fragment {
                 productModelList.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     Villa herbsModel = ds.getValue(Villa.class);
+                    DataSnapshot propertyAmenities1 = ds.child("PropertyAmenities");
+                    DataSnapshot houseRules1 = ds.child("HouseRules");
+                    PropertyAmenities propertyAmenities = propertyAmenities1.getValue(PropertyAmenities.class);
+                    HouseRules houseRules = houseRules1.getValue(HouseRules.class);
+                    herbsModel.setPropertyAmenities(propertyAmenities);
+//                  herbsModel.setBathroom(bathroom1);
+                    herbsModel.setHouseRules(houseRules);
+//                  Log.d("dataaa", herbsModel + "  io ");
+//                  herbsModel.setPropertyDetails(propertyDetails);
+//                  herbsModel.setHouseRules(houseRules);
                     productModelList.add(herbsModel);
                 }
                 herbsAdapter.notifyDataSetChanged();

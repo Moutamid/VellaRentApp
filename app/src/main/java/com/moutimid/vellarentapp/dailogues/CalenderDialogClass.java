@@ -9,9 +9,12 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 
+import com.fxn.stash.Stash;
 import com.moutamid.vellarentapp.R;
 import com.moutimid.vellarentapp.activities.Home.VillaDetailsActivity;
+import com.moutimid.vellarentapp.helper.Config;
 import com.moutimid.vellarentapp.helper.EventDecorator;
+import com.moutimid.vellarentapp.model.Villa;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
@@ -25,15 +28,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 public class CalenderDialogClass extends Dialog {
 
-    final List<String> pinkDateList = Arrays.asList(
-            "2023-01-19",
-            "2023-01-23",
-            "2023-01-22");
-//    final List<String> grayDateList = Arrays.asList(
-//            "2023-01-02", "2023-01-06");
+
 
     final String DATE_FORMAT = "yyyy-MM-dd";
 
@@ -45,7 +44,6 @@ public class CalenderDialogClass extends Dialog {
 
     public CalenderDialogClass(Context a) {
         super(a);
-        // TODO Auto-generated constructor stub
         this.c = a;
     }
 
@@ -61,20 +59,30 @@ public class CalenderDialogClass extends Dialog {
             public void onClick(View view) {
                 dismiss();
                 c.startActivity(new Intent(c, VillaDetailsActivity.class));
-
             }
         });
         calendarView = findViewById(R.id.calendarView);
         calendarView.setShowOtherDates(MaterialCalendarView.SHOW_ALL);
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = dateFormat.format(calendar.getTime());
 
-        final LocalDate min = getLocalDate("2023-01-01");
-        final LocalDate max = getLocalDate("2023-01-04");
+        calendar.add(Calendar.DAY_OF_YEAR, 7);
+        String dateAfter7Days = dateFormat.format(calendar.getTime());
 
+        final LocalDate min = getLocalDate(currentDate);
+        final LocalDate max = getLocalDate(dateAfter7Days);
+        Villa villaModel = (Villa) Stash.getObject(Config.currentModel, Villa.class);
+
+        String dateString = villaModel.available_dates;
+        String[] dateArray = dateString.split(",");
+        List<String> dateList = Arrays.asList(dateArray);
+        List<String> filteredDates = dateList.stream()
+                .filter(date -> date.compareTo(currentDate) >= 0 && date.compareTo(dateAfter7Days) <= 0)
+                .collect(Collectors.toList());
         calendarView.state().edit().setMinimumDate(min).setMaximumDate(max).commit();
 
-
-        setEvent(pinkDateList, pink);
-//        setEvent(grayDateList, gray);
+        setEvent(filteredDates, pink);
 
         calendarView.invalidateDecorators();
     }
@@ -89,21 +97,16 @@ public class CalenderDialogClass extends Dialog {
             }
         }
 
-
         List<CalendarDay> datesLeft = new ArrayList<>();
         List<CalendarDay> datesCenter = new ArrayList<>();
         List<CalendarDay> datesRight = new ArrayList<>();
         List<CalendarDay> datesIndependent = new ArrayList<>();
 
-
         for (LocalDate localDate : localDateList) {
-
             boolean right = false;
             boolean left = false;
 
             for (LocalDate day1 : localDateList) {
-
-
                 if (localDate.isEqual(day1.plusDays(1))) {
                     left = true;
                 }
@@ -137,9 +140,7 @@ public class CalenderDialogClass extends Dialog {
     }
 
     void setDecor(List<CalendarDay> calendarDayList, int drawable) {
-        calendarView.addDecorators(new EventDecorator(c
-                , drawable
-                , calendarDayList));
+        calendarView.addDecorators(new EventDecorator(c, drawable, calendarDayList));
     }
 
     LocalDate getLocalDate(String date) {
@@ -151,8 +152,6 @@ public class CalenderDialogClass extends Dialog {
             return LocalDate.of(cal.get(Calendar.YEAR),
                     cal.get(Calendar.MONTH) + 1,
                     cal.get(Calendar.DAY_OF_MONTH));
-
-
         } catch (NullPointerException e) {
             return null;
         } catch (ParseException e) {

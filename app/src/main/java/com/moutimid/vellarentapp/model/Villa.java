@@ -19,7 +19,8 @@ public class Villa {
     private double lng;
     private String title;
 
-
+    public String available;
+    public String available_dates;
     // Default constructor for Firebase
     public Villa() {
     }
@@ -99,5 +100,21 @@ public class Villa {
 
     public String getTitle() {
         return title;
+    }
+
+    public void setHouseRules(HouseRules houseRules) {
+        this.houseRules = houseRules;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public void setPropertyAmenities(PropertyAmenities propertyAmenities) {
+        this.propertyAmenities = propertyAmenities;
+    }
+
+    public void setPropertyDetails(PropertyDetails propertyDetails) {
+        this.propertyDetails = propertyDetails;
     }
 }
