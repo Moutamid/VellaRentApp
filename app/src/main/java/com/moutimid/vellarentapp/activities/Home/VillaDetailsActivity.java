@@ -31,6 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.moutamid.vellarentapp.R;
 import com.moutimid.vellarentapp.dailogues.CalenderDialogClass;
 import com.moutimid.vellarentapp.helper.Config;
+import com.moutimid.vellarentapp.model.UserModel;
 import com.moutimid.vellarentapp.model.Villa;
 
 import org.json.JSONException;
@@ -286,8 +287,10 @@ public class VillaDetailsActivity extends AppCompatActivity {
         JSONObject notifcationBody = new JSONObject();
 
         try {
+            UserModel userModel = (UserModel) Stash.getObject("UserDetails", UserModel.class);
+
             notifcationBody.put("title", "Booking Alert");
-            notifcationBody.put("message", villaModel.getUserName().toString()+ "want to book this Villa");
+            notifcationBody.put("message", userModel.name+ " wants to book this Villa");
             notification.put("to", token); // Use the FCM token of the recipient device
             notification.put("data", notifcationBody);
 

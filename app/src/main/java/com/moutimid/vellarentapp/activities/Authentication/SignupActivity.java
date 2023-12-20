@@ -126,9 +126,9 @@ public class SignupActivity extends AppCompatActivity {
                         userModel.phone_number = phone_number.getText().toString();
                         userModel.city = city.getText().toString();
                         userModel.image_url = downloadImageUri.toString();
-                        userModel.id = Constants.auth().getCurrentUser().getUid();
-                        Stash.put("userID", userModel.id);
-                        Constants.UserReference.child(Objects.requireNonNull(Constants.auth().getCurrentUser().getUid())).setValue(userModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        userModel.id = authResult.getResult().getUser().getUid();
+                        Stash.put("userID", authResult.getResult().getUser().getUid());
+                        Constants.UserReference.child(Objects.requireNonNull(authResult.getResult().getUser().getUid())).setValue(userModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
                                 Stash.put("UserDetails", userModel);
