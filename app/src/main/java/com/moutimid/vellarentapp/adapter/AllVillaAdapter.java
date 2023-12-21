@@ -60,6 +60,7 @@ public class AllVillaAdapter extends RecyclerView.Adapter<AllVillaAdapter.Galler
 
         }
         Glide.with(ctx).load(villa.getImage()).into(holder.image);
+
         Glide.with(ctx).load(villa.getUserImage()).into(holder.user_image);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

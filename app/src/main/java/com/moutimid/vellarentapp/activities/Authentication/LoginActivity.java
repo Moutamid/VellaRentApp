@@ -97,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()) {
                                 UserModel userModel = snapshot.getValue(UserModel.class);
+
                                 Stash.put("UserDetails", userModel);
                                 Stash.put("userID", authResult.getUser().getUid());
 

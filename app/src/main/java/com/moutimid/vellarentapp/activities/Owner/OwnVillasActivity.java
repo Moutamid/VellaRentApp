@@ -30,6 +30,7 @@ public class OwnVillasActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_own_villas);
+
         content_rcv = findViewById(R.id.content_rcv);
         content_rcv.setLayoutManager(new GridLayoutManager(OwnVillasActivity.this, 1));
         herbsAdapter = new OwnVillaAdapter(OwnVillasActivity.this, productModelList);

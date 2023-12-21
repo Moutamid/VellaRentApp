@@ -44,6 +44,7 @@ public class FavouriteFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
         ArrayList<Villa> VillaArrayList = Stash.getArrayList(Config.favourite, Villa.class);
         retaurantAdapter = new AllVillaAdapter(getContext(), VillaArrayList);
         content_rcv.setAdapter(retaurantAdapter);

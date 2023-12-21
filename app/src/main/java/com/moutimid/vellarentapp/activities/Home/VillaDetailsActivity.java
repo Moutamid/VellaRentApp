@@ -298,7 +298,6 @@ public class VillaDetailsActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         JsonObjectRequest jsObjRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 Config.NOTIFICATIONAPIURL,

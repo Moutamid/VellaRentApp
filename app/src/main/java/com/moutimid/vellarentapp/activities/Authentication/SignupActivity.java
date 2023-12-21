@@ -132,6 +132,7 @@ public class SignupActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void unused) {
                                 Stash.put("UserDetails", userModel);
+
                                 lodingbar.dismiss();
                                 startActivity(new Intent(SignupActivity.this, MainActivity.class));
                                 finishAffinity();
