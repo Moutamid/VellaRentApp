@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="230dp"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     app:cardElevation="2dp"
@@ -16,134 +16,130 @@
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/image"
             android:layout_width="match_parent"
-            android:layout_height="170dp"
+            android:layout_height="130dp"
             android:src="@mipmap/ic_launcher"
             android:scaleType="fitXY"
             app:riv_corner_radius="5dp" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/user_image"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="150dp"
-            android:layout_marginRight="10dp"
-            android:elevation="2dp"
-            android:src="@mipmap/ic_launcher"
-            app:civ_border_color="#CF6340"
-            app:civ_border_width="1dp" />
-
-        <TextView
-            android:id="@+id/user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="200dp"
-            android:layout_marginRight="15dp"
-            android:maxLines="2"
-            android:fontFamily="@font/lexend_medium"
-            android:gravity="end"
-            android:text="Samundri"
-            android:textColor="@color/black"
-            android:textSize="12dp" />
-
-        <TextView
-            android:id="@+id/villa_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/image"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/calibri_bold"
-            android:maxLines="2"
-            android:layout_marginRight="90dp"
-            android:text="Food Street Samundri"
-            android:textColor="@color/black"
-            android:textSize="13dp" />
 
         <LinearLayout
-            android:id="@+id/price_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_below="@+id/villa_name"
-            android:layout_marginRight="5dp"
-            android:orientation="vertical">
+            android:id="@+id/name_layout"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/image"
+
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/villa_name"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/calibri"
+                android:layout_marginTop="7dp"
+                android:layout_weight="2"
+                android:fontFamily="@font/calibri_bold"
                 android:maxLines="1"
-                android:text="PRICE"
-                android:textColor="@color/grey"
-                android:textSize="11dp" />
+                android:paddingEnd="20dp"
+
+                android:text="Food Street Samundri "
+                android:textColor="@color/black"
+                android:textSize="13dp" />
 
             <TextView
                 android:id="@+id/bill"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/villa_name"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="12dp"
-                android:fontFamily="@font/calibri"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="7dp"
+                android:layout_weight="3"
+                android:fontFamily="@font/lexend_medium"
+                android:gravity="end"
+                android:paddingRight="10dp"
                 android:maxLines="1"
-                android:text="500 $/month"
-                android:textColor="@color/black"
+                android:text="$5000/month"
+                android:textColor="#C11A0E"
                 android:textSize="11dp" />
 
         </LinearLayout>
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/villa_name"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
-            android:layout_toRightOf="@+id/price_layout"
-            android:background="#AEA7A7" />
+        <ImageView
+            android:id="@+id/location_img"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_below="@+id/name_layout"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="4dp"
+            android:src="@drawable/pin" />
 
-        <LinearLayout
-            android:id="@+id/bill_layout"
-            android:layout_marginLeft="10dp"
-
+        <TextView
+            android:id="@+id/distance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/villa_name"
-            android:layout_marginRight="20dp"
-            android:layout_toRightOf="@+id/price_layout"
-            android:orientation="vertical">
+            android:layout_below="@+id/name_layout"
+            android:layout_marginLeft="5dp"
+
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="12dp"
+            android:layout_toRightOf="@+id/location_img"
+            android:fontFamily="@font/lexend_light"
+            android:maxLines="1"
+            android:text="2.7 km away from you"
+            android:textColor="@color/black"
+            android:textSize="9dp" />
+
+
+        <LinearLayout
+            android:id="@+id/bedroom"
+            android:layout_height="20dp"
+            android:layout_below="@+id/name_layout"
+            android:layout_marginLeft="40dp"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@+id/distance"
+            android:background="@drawable/btn_bg"
+            android:backgroundTint="#29C32424"
+            android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/no_of_bedroom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginLeft="12dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/calibri"
+                android:fontFamily="@font/lexend_light"
                 android:maxLines="1"
-                android:text="BILLS"
-                android:textColor="@color/grey"
-                android:textSize="11dp" />
+                android:text="4"
+                android:textColor="#6A6262"
+                android:textSize="12dp" />
 
-            <TextView
-                android:id="@+id/bill_included"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/villa_name"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="12dp"
-                android:fontFamily="@font/calibri"
-                android:maxLines="1"
-                android:text="Included"
-                android:textColor="@color/black"
-                android:textSize="11dp" />
+            <ImageView
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/bed"
+
+                app:tint="@color/black" />
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_below="@+id/bedroom"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/btn_bg"
+            android:gravity="center"
+            android:text="Check availability"
+            android:textColor="@color/white"
+            android:textSize="11dp" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

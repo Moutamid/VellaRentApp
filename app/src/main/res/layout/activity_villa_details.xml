@@ -3,26 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:expandableTextView="http://schemas.android.com/tools"
     android:background="@color/white">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@drawable/villa"
+            android:scaleType="fitXY" />
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/app_color">
+            android:layout_height="90dp">
 
             <ImageView
                 android:id="@+id/backpress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:onClick="onBack"
+                android:padding="8dp"
+                android:backgroundTint="#E1E1E1"
+                android:background="@drawable/bg_green_circle"
                 android:src="@drawable/baseline_arrow_back_ios_new_24"
-                app:tint="@color/white" />
+                app:tint="@color/black" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -34,42 +42,39 @@
 
                 <ImageView
                     android:id="@+id/favourite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:padding="8dp"
+                    android:backgroundTint="#E1E1E1"
+                    android:background="@drawable/bg_green_circle"
                     android:src="@drawable/baseline_favorite_border_24"
-                    app:tint="@color/white" />
+                    app:tint="#F44336" />
 
                 <ImageView
                     android:id="@+id/unfavourite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/baseline_favorite_24"
-                    android:visibility="gone"
-                    app:tint="@color/white" />
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:padding="8dp"
+                    android:backgroundTint="#E1E1E1"
+                    android:background="@drawable/bg_green_circle"
+                android:visibility="gone"    android:src="@drawable/baseline_favorite_24"
+                    app:tint="#F44336" />
 
             </RelativeLayout>
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginEnd="25dp"
-                android:maxLines="1"
-                android:paddingLeft="6dp"
-                android:text="Villa Details"
-                android:textColor="@color/white"
-                android:textSize="18dp"
-                android:textStyle="bold" />
+
         </androidx.appcompat.widget.Toolbar>
 
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:background="@mipmap/ic_launcher"
-            android:scaleType="fitXY" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/image"
+    android:background="@drawable/car_bg"
+    android:backgroundTint="@color/white"
+    android:layout_marginTop="-20dp"
+    android:orientation="vertical"
+>
+
 
         <TextView
             android:id="@+id/name"
@@ -80,137 +85,149 @@
             android:layout_marginTop="20dp"
             android:layout_marginRight="45dp"
             android:elevation="8dp"
-            android:fontFamily="@font/lexend_extra_bold"
+            android:fontFamily="@font/lexend_medium"
             android:text="The Palm Beachfront Estate"
             android:textColor="@color/black"
-            android:textSize="22dp" />
+            android:textSize="18dp" />
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/address"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="@font/lexend_light"
+        android:text="Carrer de la Ribera, Barcelona, Frace"
+        android:textColor="@color/black"
+
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+
+        android:layout_marginRight="25dp"
+
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/lexend_semi_bold"
+        android:text="500 $/month"
+        android:textColor="#A81106"
+        android:textSize="14dp" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:id="@+id/bedroom"
+        android:layout_height="25dp"
+        android:layout_below="@+id/name_layout"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginRight="5dp"
+        android:layout_toRightOf="@+id/distance"
+        android:background="@drawable/stroke_bg"
+
+        android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/price"
+            android:id="@+id/no_of_bedroom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/name"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/lexend_semi_bold"
-            android:text="500 $/month"
+            android:layout_gravity="center"
+            android:layout_marginLeft="12dp"
+            android:fontFamily="@font/lexend_light"
+            android:maxLines="1"
+            android:text="4"
             android:textColor="#000000"
-            android:textSize="14dp" />
+            android:textSize="12dp" />
 
+        <ImageView
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/bed"
 
-        <LinearLayout
-            android:layout_width="match_parent"
+            app:tint="#B50808" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="25dp"
+        android:layout_below="@+id/name_layout"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginRight="5dp"
+        android:layout_toRightOf="@+id/distance"
+        android:background="@drawable/stroke_bg"
+
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/no_of_bathroom"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:background="@drawable/btn_bg"
-            android:backgroundTint="#0F09325E"
-            android:orientation="vertical"
-            android:padding="15dp">
+            android:layout_gravity="center"
+            android:layout_marginLeft="12dp"
+            android:fontFamily="@font/lexend_light"
+            android:maxLines="1"
+            android:text="4"
+            android:textColor="#000000"
+            android:textSize="12dp" />
 
-            <LinearLayout
-                android:id="@+id/room_type_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp">
+        <ImageView
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/bathtub"
 
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/ic_home"
-                    app:tint="@color/app_color" />
+            app:tint="#B50808" />
 
-                <TextView
-                    android:id="@+id/room_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:fontFamily="@font/lexend_medium"
-                    android:gravity="center"
-                    android:text="Private Rooms"
-                    android:textColor="@color/black" />
-            </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        >
+        <ImageView
+            android:id="@+id/location_img"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_below="@+id/name_layout"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="4dp"
+            android:src="@drawable/pin" />
 
-            <LinearLayout
-                android:id="@+id/room_area_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
+        <TextView
+            android:id="@+id/distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name_layout"
+            android:layout_marginLeft="5dp"
 
-                >
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="12dp"
+            android:layout_toRightOf="@+id/location_img"
+            android:fontFamily="@font/lexend_light"
+            android:maxLines="1"
+            android:text="2.7 km away from you"
+            android:textColor="@color/black"
+            android:textSize="12dp" />
 
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/measuring_tape"
-                    app:tint="@color/app_color" />
+    </LinearLayout>
 
-                <TextView
-                    android:id="@+id/room_area"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:fontFamily="@font/lexend_medium"
-                    android:gravity="center"
-                    android:text="170m²"
-                    android:textColor="@color/black" />
-            </LinearLayout>
+</LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/no_of_bedroom_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-
-                >
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/bed"
-                    app:tint="@color/app_color" />
-
-                <TextView
-                    android:id="@+id/no_of_bedroom"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:fontFamily="@font/lexend_medium"
-                    android:gravity="center"
-                    android:text="4"
-                    android:textColor="@color/black" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/no_of_bathroom_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-
-                >
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/bathtub"
-                    app:tint="@color/app_color" />
-
-                <TextView
-                    android:id="@+id/no_of_bathroom"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:fontFamily="@font/lexend_medium"
-                    android:gravity="center"
-                    android:text="2"
-                    android:textColor="@color/black" />
-            </LinearLayout>
-        </LinearLayout>
 
         <TextView
             android:id="@+id/description_title"
@@ -222,56 +239,50 @@
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/lexend_semi_bold"
-            android:text="Description"
+            android:text="About"
             android:textColor="@color/black"
             android:textSize="18dp" />
+    <io.github.glailton.expandabletextview.ExpandableTextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:collapsedLines="4"
+        app:animDuration="500"
+        app:readMoreText="Read More"
+        app:readLessText="Read Less"
+        app:textMode="line"
+        app:isExpanded="false"
+        app:expandType="layout"
+        android:layout_marginStart="17dp"
+        android:layout_marginEnd="15dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/lexend_light"
+        android:textSize="14dp"
+        app:ellipsizeTextColor="#bc8f8f"
+        android:layout_marginBottom="15dp"
+        android:text="Lorem Ipsum is simpLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsumly dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. "
+        />
 
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/address"
-            android:layout_marginStart="17dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="15dp"
-            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-            android:textColor="@color/black"
-            android:fontFamily="@font/lexend_light"
-            android:textSize="14dp" />
 
 
         <TextView
             android:id="@+id/availability"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_below="@+id/address"
             android:layout_marginStart="17dp"
             android:layout_marginTop="5dp"
-            android:drawableEnd="@drawable/calendar"
+            android:drawableEnd="@drawable/calendar_img"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="5dp"
             android:layout_gravity="center"
             android:gravity="center_vertical"
-            android:fontFamily="@font/lexend_medium"
+            android:fontFamily="@font/lexend_semi_bold"
             android:text="Availability"
             android:textColor="@color/black"
             android:textSize="14dp" />
 
-        <TextView
-            android:id="@+id/bill_included"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/name"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="25dp"
-            android:fontFamily="@font/lexend_semi_bold"
-            android:text="Bill included"
-            android:textColor="#000000"
-
-            android:textSize="15dp" />
-
-        <TextView
+    <TextView
             android:id="@+id/house_rules"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -584,107 +595,36 @@
             </LinearLayout>
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/price_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/address"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/lexend_semi_bold"
-            android:text="Price"
-            android:textColor="@color/black"
-            android:textSize="18dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/address"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="@font/lexend_medium"
-            android:text="Monthly Rent"
-            android:textColor="@color/black"
-            android:textSize="14dp" />
-
-        <TextView
-            android:id="@+id/monthly_rent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/address"
-            android:layout_marginStart="17dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="@font/lexend_light"
-            android:text="$ 800/month"
-            android:textColor="@color/black"
-            android:textSize="14dp" />
 
 
-        <TextView
-            android:id="@+id/bills"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/address"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="@font/lexend_medium"
-            android:text="Bills"
-            android:textColor="@color/black"
-            android:textSize="14dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="35dp"
 
-        <TextView
-            android:id="@+id/included"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/address"
-            android:layout_marginStart="17dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="@font/lexend_light"
-            android:text="Included"
-            android:textColor="@color/black"
-            android:textSize="14dp" />
-        <TextView
-            android:id="@+id/map"
+        >
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/show_map"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/address"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="5dp"
-            android:drawableEnd="@drawable/baseline_map_24"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="5dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
             android:layout_gravity="center"
-            android:gravity="center_vertical"
-            android:fontFamily="@font/lexend_medium"
-            android:text="Location"
-            android:textColor="@color/black"
-            android:textSize="14dp" />
-        <TextView
-            android:id="@+id/location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/address"
-            android:layout_marginStart="17dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="25dp"
-            android:fontFamily="@font/lexend_light"
-            android:text="Carrer de la Ribera, Barcelona, Frace"
-            android:textColor="@color/black"
-
-            android:textSize="14dp" />
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_weight="1"
+            android:onClick="booking"
+            android:textSize="14dp"
+            android:textAllCaps="false"
+            android:elevation="2dp"
+            android:background="@drawable/edit_bg"
+            android:text="Show on Map"
+            android:textColor="@color/app_color" />
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/request_button"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginBottom="35dp"
+            android:layout_height="50dp"
             android:backgroundTint="@color/app_color"
             android:layout_alignParentBottom="true"
             android:layout_gravity="center"
@@ -693,10 +633,12 @@
             android:layout_weight="1"
             android:onClick="booking"
             android:background="@drawable/btn_bg"
-            android:text="Request for Booking"
+            android:text="Rent"
             android:textColor="@color/white" />
 
-
     </LinearLayout>
+
+</LinearLayout>
+    </RelativeLayout>
 
 </androidx.core.widget.NestedScrollView>

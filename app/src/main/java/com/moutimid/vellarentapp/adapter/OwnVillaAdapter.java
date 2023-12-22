@@ -39,7 +39,7 @@ public class OwnVillaAdapter extends RecyclerView.Adapter<OwnVillaAdapter.Galler
     @Override
     public GalleryPhotosViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.all_villa, parent, false);
+        View view = inflater.inflate(R.layout.own_villa, parent, false);
         return new GalleryPhotosViewHolder(view);
     }
 
@@ -52,16 +52,17 @@ public class OwnVillaAdapter extends RecyclerView.Adapter<OwnVillaAdapter.Galler
     public void onBindViewHolder(@NonNull GalleryPhotosViewHolder holder, final int position) {
         Villa villa = productModels.get(position);
         holder.villa_name.setText(villa.getName());
-        holder.user_name.setText(villa.getUserName());
-        holder.villa_discription.setText(villa.getBill() + " $/month");
-        if (villa.isBills_included()) {
-            holder.bill_included.setText("Included");
-        } else {
-            holder.bill_included.setText("Not Included");
-
-        }
+        holder.villa_bill.setText("$"+villa.getBill()+"/month");
+        holder.villa_location.setText(villa.getTitle());
         Glide.with(ctx).load(villa.getImage()).into(holder.image);
-        Glide.with(ctx).load(villa.getUserImage()).into(holder.user_image);
+        if(villa.isBills_included())
+        {
+            holder.villa_bill_included.setText("Bill included");
+        }
+        else
+        {
+            holder.villa_bill_included.setText("Bill not included");
+        }
 
     }
 
@@ -72,20 +73,18 @@ public class OwnVillaAdapter extends RecyclerView.Adapter<OwnVillaAdapter.Galler
 
     public class GalleryPhotosViewHolder extends RecyclerView.ViewHolder {
 
-        TextView villa_discription, villa_name, bill_included, user_name;
+        TextView villa_location, villa_name, villa_bill, villa_bill_included;
         ImageView image;
-        CircleImageView user_image;
 
 
         public GalleryPhotosViewHolder(@NonNull View itemView) {
             super(itemView);
-            villa_discription = itemView.findViewById(R.id.bill);
+            villa_location = itemView.findViewById(R.id.villa_location);
             villa_name = itemView.findViewById(R.id.villa_name);
+            villa_bill = itemView.findViewById(R.id.villa_bill);
             image = itemView.findViewById(R.id.image);
-            bill_included = itemView.findViewById(R.id.bill_included);
-            user_name = itemView.findViewById(R.id.user_name);
-            user_image = itemView.findViewById(R.id.user_image);
-
+            villa_bill_included = itemView.findViewById(R.id.villa_bill_included);
+//
         }
     }
 }

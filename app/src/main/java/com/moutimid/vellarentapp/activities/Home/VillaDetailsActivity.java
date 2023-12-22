@@ -1,6 +1,8 @@
 package com.moutimid.vellarentapp.activities.Home;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -41,50 +43,50 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.github.glailton.expandabletextview.ExpandableTextView;
+
 public class VillaDetailsActivity extends AppCompatActivity {
     Villa villaModel;
-    TextView map;
+    Button map;
     ImageView favourite_img, unfavourite_img, image;
     String token_admin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_villa_details);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+
+// Set the status bar background color to white
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.WHITE);
+        }
         image = findViewById(R.id.image);
-        map = findViewById(R.id.map);
+        map = findViewById(R.id.show_map);
         unfavourite_img = findViewById(R.id.unfavourite);
         favourite_img = findViewById(R.id.favourite);
         villaModel = (Villa) Stash.getObject(Config.currentModel, Villa.class);
         image = findViewById(R.id.image);
-        map = findViewById(R.id.map);
         unfavourite_img = findViewById(R.id.unfavourite);
         favourite_img = findViewById(R.id.favourite);
         // Assign IDs to views
         Toolbar toolbar = findViewById(R.id.toolbar_);
         ImageView backpress = findViewById(R.id.backpress);
-        TextView title = findViewById(R.id.title);
         ImageView image = findViewById(R.id.image);
         TextView name = findViewById(R.id.name);
         TextView price = findViewById(R.id.price);
         name.setText(villaModel.getName());
         price.setText(villaModel.getBill() + " $/month");
         Glide.with(VillaDetailsActivity.this).load(villaModel.getImage()).into(image);
-        LinearLayout roomTypeLayout = findViewById(R.id.room_type_layout);
-        TextView roomType = findViewById(R.id.room_type);
-        LinearLayout roomAreaLayout = findViewById(R.id.room_area_layout);
-        TextView roomArea = findViewById(R.id.room_area);
-        roomArea.setText(villaModel.getArea() + "m²");
-        LinearLayout noOfBedroomLayout = findViewById(R.id.no_of_bedroom_layout);
         TextView noOfBedroom = findViewById(R.id.no_of_bedroom);
         noOfBedroom.setText(villaModel.getBedroom() + "");
-        LinearLayout noOfBathroomLayout = findViewById(R.id.no_of_bathroom_layout);
         TextView noOfBathroom = findViewById(R.id.no_of_bathroom);
         noOfBathroom.setText(villaModel.getBathRoom() + "");
         TextView descriptionTitle = findViewById(R.id.description_title);
-        TextView description = findViewById(R.id.description);
+        ExpandableTextView description = findViewById(R.id.description);
         description.setText(villaModel.getDescription());
         TextView availability = findViewById(R.id.availability);
-        TextView billIncluded = findViewById(R.id.bill_included);
         TextView house_rules = findViewById(R.id.house_rules);
         TextView pet_friendly = findViewById(R.id.pet_friendly);
         TextView smoke_friendly = findViewById(R.id.smoke_friendly);
@@ -103,12 +105,7 @@ public class VillaDetailsActivity extends AppCompatActivity {
         } else {
             smoke_friendly.setVisibility(View.GONE);
         }
-        if (villaModel.isBills_included()) {
-            billIncluded.setText("Included");
-        } else {
-            billIncluded.setText("Not Included");
-        }
-        TextView propertyAmenitiesTitle = findViewById(R.id.property_amenities_title);
+         TextView propertyAmenitiesTitle = findViewById(R.id.property_amenities_title);
         LinearLayout dryerLayout = findViewById(R.id.dryer_layout);
         LinearLayout furnishedLayout = findViewById(R.id.furnished_layout);
         LinearLayout equippedKitchenLayout = findViewById(R.id.equipped_kitchen_layout);
@@ -119,18 +116,7 @@ public class VillaDetailsActivity extends AppCompatActivity {
         LinearLayout machine_layout = findViewById(R.id.machine_layout);
         LinearLayout parking_layout = findViewById(R.id.parking_layout);
         LinearLayout air_layout = findViewById(R.id.air_layout);
-        TextView priceTitle = findViewById(R.id.price_title);
-        TextView monthlyRent = findViewById(R.id.monthly_rent);
-        monthlyRent.setText(villaModel.getBill() + " $/month");
-        TextView bills = findViewById(R.id.bills);
-        TextView included = findViewById(R.id.included);
         TextView location = findViewById(R.id.location);
-        if (villaModel.isBills_included()) {
-            included.setText("Included");
-        } else {
-            included.setText("Not Included");
-        }
-
         location.setText(villaModel.getTitle());
 // Request for Rent button
         Button requestButton = findViewById(R.id.request_button);
@@ -305,6 +291,7 @@ public class VillaDetailsActivity extends AppCompatActivity {
                 response -> {
                     Log.e("True", response + "");
                     Log.d("Response", response.toString());
+                    Toast.makeText(this, "Rent request is successfully send to Owner", Toast.LENGTH_SHORT).show();
                 },
                 error -> {
                     Log.e("False", error + "");

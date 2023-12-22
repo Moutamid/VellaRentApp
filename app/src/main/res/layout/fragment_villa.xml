@@ -3,60 +3,100 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1F1F1"
+    android:background="#fff"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circularImage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/model" />
 
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-15dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@id/circularImage"
+        android:fontFamily="@font/lexend_semi_bold"
+        android:text="Hi, \nMichael"
+        android:textColor="@color/black"
+        android:textSize="14dp" />
 
-        <ImageView
-            android:id="@+id/map"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:visibility="gone"
-            android:layout_marginEnd="20dp"
-            android:src="@drawable/baseline_map_24" />
+    <ImageView
+        android:id="@+id/filter"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="end"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/bg_green_circle"
+        android:backgroundTint="#F3F2F2"
+        android:padding="9dp"
+        android:src="@drawable/filter" />
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:fontFamily="@font/lexend_extra_bold"
-            android:text="Villas"
-            android:textColor="@color/black"
-            android:textSize="35dp" />
-    </androidx.appcompat.widget.Toolbar>
+    <ImageView
+        android:id="@+id/privacy"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="end"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/bg_green_circle"
+        android:backgroundTint="#F3F2F2"
+        android:padding="9dp"
+        android:src="@drawable/privacy" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/circularImage"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/lexend_medium"
+        android:text="Find a villa"
+        android:textColor="@color/black"
+        android:textSize="15dp" />
 
     <RelativeLayout
         android:id="@+id/search_bar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_below="@+id/toolbar_"
+        android:layout_height="45dp"
+        android:layout_below="@+id/text"
+
+        android:layout_marginStart="23dp"
         android:elevation="5dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginRight="23dp"
+
 
         >
 
         <EditText
             android:id="@+id/search"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="23dp"
-            android:layout_marginLeft="23dp"
-            android:layout_marginEnd="23dp"
-            android:layout_marginRight="23dp"
-            android:background="@drawable/edit_bg"
-            android:backgroundTint="@color/white"
-            android:drawableStart="@drawable/baseline_youtube_searched_for_24"
+            android:layout_height="45dp"
+            android:drawableStart="@drawable/search"
             android:fontFamily="@font/calibri"
-            android:hint="  Search for desired Villas"
+            android:hint="  Search "
             android:padding="15dp"
             android:textColor="@color/black"
-            android:textColorHint="@color/grey"
+            android:background="@drawable/edit_bg"            android:textColorHint="#000000"
+
             android:textSize="14dp" />
 
         <ImageView
@@ -64,10 +104,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginStart="37dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="37dp"
-            android:layout_marginRight="37dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="17dp"
+            android:layout_marginRight="17dp"
             android:src="@drawable/baseline_mic_24" />
     </RelativeLayout>
 
@@ -98,15 +138,47 @@ android:visibility="gone"
 
             </androidx.cardview.widget.CardView>
 
+            <TextView
+                android:id="@+id/nearby_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/lexend_medium"
+                android:text="Best places near you"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/content_rcv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/imageView1"
-                android:layout_marginStart="16dp"
+                android:layout_below="@+id/nearby_title"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:id="@+id/recommanded_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/content_rcv"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/lexend_medium"
+                android:text="Recommanded places"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/content_rcv1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/recommanded_title"
+                android:layout_marginStart="25dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="25dp"
                 android:layout_marginBottom="16dp" />
 
             <TextView
@@ -125,5 +197,101 @@ android:visibility="gone"
 
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <View
+        android:id="@+id/bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:background="#99000000" />
+
+    <LinearLayout
+        android:id="@+id/filter_layout"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/car_bg"
+        android:backgroundTint="@color/white"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+
+        <TextView
+            android:id="@+id/price_range"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/lexend_medium"
+            android:text="Select Price Range (5000$)"
+
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <SeekBar
+            android:id="@+id/seekBarPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="8000"
+            android:padding="16dp"
+            android:progress="5000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/lexend_medium"
+            android:text="Select Amaneties"
+
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+        <!-- Options Spinner -->
+        <Spinner
+            android:id="@+id/spinnerOptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:entries="@array/options_array" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/lexend_medium"
+            android:text="Select No of Bedrooms"
+
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <Spinner
+            android:id="@+id/spinnerBedrooms"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:entries="@array/bedrooms_array" />
+
+        <!-- Apply Filters Button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnApplyFilters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_bg"
+            android:textColor="@color/white"
+            android:text="Apply Filters" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnApplyCancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/edit_bg"
+            android:text="Cancel" />
+    </LinearLayout>
+
 
 </RelativeLayout>

@@ -2,8 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="app_color">#09325E</color>
-    <color name="colorAccent">#09325E</color>
+    <color name="app_color">#218299</color>
+    <color name="colorAccent">#218299</color>
     <color name="green_color">#549F3B</color>
     <color name="pink_color">#F59FC1</color>
     <color name="textColor">#FF000000</color>

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.fxn.stash.Stash;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.moutamid.vellarentapp.R;
 import com.moutimid.vellarentapp.dailogues.CalenderDialogClass;
 import com.moutimid.vellarentapp.helper.Config;
@@ -51,19 +52,11 @@ public class AllVillaAdapter extends RecyclerView.Adapter<AllVillaAdapter.Galler
     public void onBindViewHolder(@NonNull GalleryPhotosViewHolder holder, final int position) {
         Villa villa = productModels.get(position);
         holder.villa_name.setText(villa.getName());
-        holder.user_name.setText(villa.getUserName());
-        holder.villa_discription.setText(villa.getBill() + " $/month");
-        if (villa.isBills_included()) {
-            holder.bill_included.setText("Included");
-        } else {
-            holder.bill_included.setText("Not Included");
-
-        }
+        holder.bill.setText("$"+villa.getBill()+"/month");
+        holder.no_of_bedroom.setText(villa.getBedroom()+"");
+//
         Glide.with(ctx).load(villa.getImage()).into(holder.image);
-
-        Glide.with(ctx).load(villa.getUserImage()).into(holder.user_image);
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.checkbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (villa.available.equals("available")) {
@@ -87,19 +80,18 @@ public class AllVillaAdapter extends RecyclerView.Adapter<AllVillaAdapter.Galler
 
     public class GalleryPhotosViewHolder extends RecyclerView.ViewHolder {
 
-        TextView villa_discription, villa_name, bill_included, user_name;
-        ImageView image;
-        CircleImageView user_image;
+        TextView bill, villa_name, distance, no_of_bedroom, checkbox;
+        RoundedImageView image;
 
 
         public GalleryPhotosViewHolder(@NonNull View itemView) {
             super(itemView);
-            villa_discription = itemView.findViewById(R.id.bill);
+            bill = itemView.findViewById(R.id.bill);
             villa_name = itemView.findViewById(R.id.villa_name);
+            distance = itemView.findViewById(R.id.distance);
             image = itemView.findViewById(R.id.image);
-            bill_included = itemView.findViewById(R.id.bill_included);
-            user_name = itemView.findViewById(R.id.user_name);
-            user_image = itemView.findViewById(R.id.user_image);
+            no_of_bedroom = itemView.findViewById(R.id.no_of_bedroom);
+            checkbox = itemView.findViewById(R.id.checkbox);
 
         }
     }

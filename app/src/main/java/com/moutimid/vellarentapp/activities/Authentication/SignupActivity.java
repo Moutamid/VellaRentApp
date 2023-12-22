@@ -3,6 +3,7 @@ package com.moutimid.vellarentapp.activities.Authentication;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.icu.lang.UCharacter;
 import android.net.Uri;
@@ -45,6 +46,14 @@ public class SignupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+
+// Set the status bar background color to white
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.WHITE);
+        }
         profile_pic = findViewById(R.id.profile_pic);
         initComponent();
         DatePickerDialog.OnDateSetListener date = (view, year, monthOfYear, dayOfMonth) -> {

@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">VellaRentApp</string>
-
+    <string name="app_name">Daily Villa</string>
     <string name="google_maps_key">AIzaSyAuIxeEpQQgN84bBitDRksZTcLHtIKSAeY</string>
     <string name="title_activity_maps">MapsActivity</string>
 </resources>

@@ -22,7 +22,16 @@ public class Villa {
     public String available;
     public String available_dates;
     // Default constructor for Firebase
+
+    public double distance;
+
     public Villa() {
+    }
+
+    public Villa(double lat, double lng, String title) {
+        this.lat = lat;
+        this.lng = lng;
+        this.title = title;
     }
 
     public HouseRules getHouseRules() {
@@ -116,5 +125,13 @@ public class Villa {
 
     public void setPropertyDetails(PropertyDetails propertyDetails) {
         this.propertyDetails = propertyDetails;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
 }

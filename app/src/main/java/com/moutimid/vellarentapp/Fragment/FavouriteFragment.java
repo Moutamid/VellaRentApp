@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.fxn.stash.Stash;
 import com.moutamid.vellarentapp.R;
 import com.moutimid.vellarentapp.adapter.AllVillaAdapter;
+import com.moutimid.vellarentapp.adapter.FavouriteVillaAdapter;
 import com.moutimid.vellarentapp.helper.Config;
 import com.moutimid.vellarentapp.model.Villa;
 
@@ -23,7 +24,7 @@ public class FavouriteFragment extends Fragment {
 
     RecyclerView content_rcv;
     public List<Villa> productModelList = new ArrayList<>();
-    AllVillaAdapter retaurantAdapter;
+    FavouriteVillaAdapter retaurantAdapter;
     TextView no_text;
 
 
@@ -33,9 +34,9 @@ public class FavouriteFragment extends Fragment {
         View view = inflater.inflate(R.layout.activity_favourite, container, false);
         content_rcv = view.findViewById(R.id.content_rcv);
         no_text = view.findViewById(R.id.no_text);
-        content_rcv.setLayoutManager(new GridLayoutManager(getContext(), 1));
+        content_rcv.setLayoutManager(new GridLayoutManager(getContext(), 2));
         ArrayList<Villa> VillaArrayList = Stash.getArrayList(Config.favourite, Villa.class);
-        retaurantAdapter = new AllVillaAdapter(getContext(), VillaArrayList);
+        retaurantAdapter = new FavouriteVillaAdapter(getContext(), VillaArrayList);
         content_rcv.setAdapter(retaurantAdapter);
         retaurantAdapter.notifyDataSetChanged();
         return view;
@@ -46,7 +47,7 @@ public class FavouriteFragment extends Fragment {
         super.onResume();
 
         ArrayList<Villa> VillaArrayList = Stash.getArrayList(Config.favourite, Villa.class);
-        retaurantAdapter = new AllVillaAdapter(getContext(), VillaArrayList);
+        retaurantAdapter = new FavouriteVillaAdapter(getContext(), VillaArrayList);
         content_rcv.setAdapter(retaurantAdapter);
         retaurantAdapter.notifyDataSetChanged();
 
