@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -60,9 +61,22 @@ public class OwnVillaAdapter extends RecyclerView.Adapter<OwnVillaAdapter.Galler
             holder.villa_bill_included.setText("Bill included");
         }
         else
-        {
-            holder.villa_bill_included.setText("Bill not included");
+        {holder.villa_bill_included.setText("Bill not included");
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (villa.available.equals("available")) {
+                    Stash.put(Config.currentModel, villa);
+                    String.format("%.2f ", villa.distance);
+                    Stash.put("distance",villa);
+
+                    ctx.startActivity(new Intent(ctx, VillaDetailsActivity.class));
+                } else {
+                    Toast.makeText(ctx, "Villa is not available yet", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
     }
 

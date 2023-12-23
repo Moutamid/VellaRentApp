@@ -1,5 +1,10 @@
 package com.moutimid.vellarentapp.model;
 
+import android.net.Uri;
+
+import java.util.List;
+import java.util.Map;
+
 public class Villa {
     private HouseRules houseRules;
     private Location location;
@@ -12,6 +17,7 @@ public class Villa {
     private String name;
     private int roomType;
     private int bill;
+    public int no_of_persons;
     boolean bills_included;
     String image, userImage, userName;
     String key;
@@ -20,10 +26,13 @@ public class Villa {
     private String title;
 
     public String available;
+    public String city_name;
+    public String town_name;
     public String available_dates;
-    // Default constructor for Firebase
+    public List<String> selectedImageUris;
 
     public double distance;
+    public boolean verified;
 
     public Villa() {
     }
@@ -133,5 +142,18 @@ public class Villa {
 
     public void setDistance(double distance) {
         this.distance = distance;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    private Map<String, String> images;
+
+    public Map<String, String> getImages() {
+        return images;
+    }
+
+    public void setImages(Map<String, String> images) {
+        this.images = images;
     }
 }

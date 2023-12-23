@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,13 +21,12 @@ import com.moutimid.vellarentapp.model.Villa;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 public class AllVillaAdapter extends RecyclerView.Adapter<AllVillaAdapter.GalleryPhotosViewHolder> {
 
 
     Context ctx;
     List<Villa> productModels;
+    private static final double EARTH_RADIUS = 6371;
 
     public AllVillaAdapter(Context ctx, List<Villa> productModels) {
         this.ctx = ctx;
@@ -50,22 +48,24 @@ public class AllVillaAdapter extends RecyclerView.Adapter<AllVillaAdapter.Galler
 
     @Override
     public void onBindViewHolder(@NonNull GalleryPhotosViewHolder holder, final int position) {
+
         Villa villa = productModels.get(position);
+        double distance = calculateDistance(Config.lat, Config.lng, villa.getLat(), villa.getLng());
         holder.villa_name.setText(villa.getName());
-        holder.bill.setText("$"+villa.getBill()+"/month");
-        holder.no_of_bedroom.setText(villa.getBedroom()+"");
-//
+        holder.bill.setText("$" + villa.getBill() + "/month");
+        holder.no_of_bedroom.setText(villa.getBedroom() + "");
         Glide.with(ctx).load(villa.getImage()).into(holder.image);
+        holder.distance.setText(String.format("%.2f ", distance) + " km away from you");
         holder.checkbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (villa.available.equals("available")) {
                     Stash.put(Config.currentModel, villa);
+                    Stash.put("distance",String.format("%.2f ", distance) );
+
                     CalenderDialogClass cdd = new CalenderDialogClass(ctx);
                     cdd.show();
-                }
-                else
-                {
+                } else {
                     Toast.makeText(ctx, "Villa is not available yet", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -95,4 +95,20 @@ public class AllVillaAdapter extends RecyclerView.Adapter<AllVillaAdapter.Galler
 
         }
     }
+
+    public static double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+        double dLat = Math.toRadians(lat2 - lat1);
+        double dLon = Math.toRadians(lon2 - lon1);
+
+        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
+                        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        double distance = EARTH_RADIUS * c;
+
+        return distance;
+    }
+
 }

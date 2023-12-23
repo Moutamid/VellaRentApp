@@ -82,6 +82,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="23dp"
         android:layout_marginRight="23dp"
+        android:layout_marginBottom="10dp"
 
 
         >
@@ -92,7 +93,7 @@
             android:layout_height="45dp"
             android:drawableStart="@drawable/search"
             android:fontFamily="@font/calibri"
-            android:hint="  Search "
+            android:hint="  Search by villa name / town / city "
             android:padding="15dp"
             android:textColor="@color/black"
             android:background="@drawable/edit_bg"            android:textColorHint="#000000"
@@ -147,6 +148,7 @@ android:visibility="gone"
                 android:fontFamily="@font/lexend_medium"
                 android:text="Best places near you"
                 android:textColor="@color/black"
+                android:visibility="gone"
                 android:textSize="18dp" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -159,6 +161,17 @@ android:visibility="gone"
                 android:layout_marginEnd="25dp"
                 android:layout_marginBottom="16dp" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/search_rcv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nearby_title"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone" />
+
             <TextView
                 android:id="@+id/recommanded_title"
                 android:layout_width="wrap_content"
@@ -169,6 +182,8 @@ android:visibility="gone"
                 android:fontFamily="@font/lexend_medium"
                 android:text="Recommanded places"
                 android:textColor="@color/black"
+                android:visibility="gone"
+
                 android:textSize="18dp" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -223,54 +238,73 @@ android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:fontFamily="@font/lexend_medium"
-            android:text="Select Price Range (5000$)"
+            android:fontFamily="@font/lexend_semi_bold"
+            android:text="Filter by"
 
             android:textColor="@color/black"
-            android:textSize="16dp" />
+            android:textSize="20dp" />
 
-        <SeekBar
-            android:id="@+id/seekBarPrice"
+        <CheckBox
+            android:id="@+id/check_box"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:max="8000"
-            android:padding="16dp"
-            android:progress="5000" />
+            android:text="Available tonight" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:fontFamily="@font/lexend_medium"
-            android:text="Select Amaneties"
-
+            android:text="Select City"
+android:visibility="gone"
             android:textColor="@color/black"
             android:textSize="16dp" />
         <!-- Options Spinner -->
         <Spinner
-            android:id="@+id/spinnerOptions"
+            android:id="@+id/spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:entries="@array/options_array" />
+            android:visibility="gone"
+
+            android:layout_marginTop="10dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:fontFamily="@font/lexend_medium"
-            android:text="Select No of Bedrooms"
+            android:text="Select Town"
+            android:visibility="gone"
 
             android:textColor="@color/black"
             android:textSize="16dp" />
 
-        <Spinner
-            android:id="@+id/spinnerBedrooms"
+        <RelativeLayout
             android:layout_width="match_parent"
+            android:visibility="gone"
 
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:entries="@array/bedrooms_array" />
+            android:layout_height="50dp">
+
+            <TextView
+                android:id="@+id/text_town"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/lexend_medium"
+                android:textColor="@color/black">
+
+            </TextView>
+
+            <Spinner
+                android:id="@+id/spinner_town"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp" />
+
+        </RelativeLayout>
 
         <!-- Apply Filters Button -->
         <androidx.appcompat.widget.AppCompatButton
@@ -280,7 +314,7 @@ android:visibility="gone"
             android:layout_margin="10dp"
             android:background="@drawable/btn_bg"
             android:textColor="@color/white"
-            android:text="Apply Filters" />
+            android:text="Apply Filter" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnApplyCancel"
@@ -293,5 +327,13 @@ android:visibility="gone"
             android:text="Cancel" />
     </LinearLayout>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_centerInParent="true"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/loading" />
 
 </RelativeLayout>

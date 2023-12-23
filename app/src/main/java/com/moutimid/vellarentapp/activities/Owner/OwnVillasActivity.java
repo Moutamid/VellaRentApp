@@ -24,7 +24,7 @@ import java.util.List;
 public class OwnVillasActivity extends AppCompatActivity {
     RecyclerView content_rcv;
     public List<Villa> productModelList = new ArrayList<>();
-    OwnVillaAdapter herbsAdapter;
+    OwnVillaAdapter villaAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +33,8 @@ public class OwnVillasActivity extends AppCompatActivity {
 
         content_rcv = findViewById(R.id.content_rcv);
         content_rcv.setLayoutManager(new GridLayoutManager(OwnVillasActivity.this, 1));
-        herbsAdapter = new OwnVillaAdapter(OwnVillasActivity.this, productModelList);
-        content_rcv.setAdapter(herbsAdapter);
+        villaAdapter = new OwnVillaAdapter(OwnVillasActivity.this, productModelList);
+        content_rcv.setAdapter(villaAdapter);
         if (Config.isNetworkAvailable(OwnVillasActivity.this)) {
             getProducts();
         } else {
@@ -48,10 +48,10 @@ public class OwnVillasActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 productModelList.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    Villa herbsModel = ds.getValue(Villa.class);
-                    productModelList.add(herbsModel);
+                    Villa villaModel = ds.getValue(Villa.class);
+                    productModelList.add(villaModel);
                 }
-                herbsAdapter.notifyDataSetChanged();
+                villaAdapter.notifyDataSetChanged();
             }
 
 
@@ -66,8 +66,8 @@ public class OwnVillasActivity extends AppCompatActivity {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 //                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-//                    Villa herbsModel1 = ds.getValue(Villa.class);
-//                    userArrayList.add(new LocationModel(herbsModel1.getLat(), herbsModel1.getLng(), herbsModel1.getName()));
+//                    Villa villaModel1 = ds.getValue(Villa.class);
+//                    userArrayList.add(new LocationModel(villaModel1.getLat(), villaModel1.getLng(), villaModel1.getName()));
 //                    Config.dismissProgressDialog();
 //
 //                }

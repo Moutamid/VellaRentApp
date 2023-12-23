@@ -79,16 +79,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/bill"
             android:layout_marginLeft="5dp"
-
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="7dp"
             android:layout_marginBottom="12dp"
             android:layout_toRightOf="@+id/location_img"
             android:fontFamily="@font/lexend_light"
             android:maxLines="1"
             android:text="2.7 km away from you"
             android:textColor="@color/black"
-            android:textSize="11dp" />
-
+            android:textSize="9dp" />
 
         <LinearLayout
             android:id="@+id/bedroom"

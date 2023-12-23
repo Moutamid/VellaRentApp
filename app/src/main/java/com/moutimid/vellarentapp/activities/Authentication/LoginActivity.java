@@ -110,6 +110,8 @@ public class LoginActivity extends AppCompatActivity {
 
                                 Stash.put("UserDetails", userModel);
                                 Stash.put("userID", authResult.getUser().getUid());
+                                Stash.put("username", userModel.name);
+                                Stash.put("userimage", userModel.image_url);
 
                                 lodingbar.dismiss();
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));

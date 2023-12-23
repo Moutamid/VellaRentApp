@@ -62,6 +62,8 @@ public class Config extends Activity {
     public static Dialog lodingbar;
     public static String SERVER_KEY="AAAAFp-OyHA:APA91bGndaKxmUVhoqvOGw6N2bA079pgW-6kiRcfvsb2-9Iw6tiW4aAnIGVZI4eb22uF3qzhOthzmQocVlhHb4wkRvPiqCC2OS_DWKYehZzNf3mL6Qztn4keRM09CiSn4JsrFn6TmA0e";
     public static  String NOTIFICATIONAPIURL="https://fcm.googleapis.com/fcm/send";
+    public  static double lat;
+    public  static double lng;
 
     public static void alertDialogue(final Activity context, String message, boolean finish) {
 

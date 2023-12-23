@@ -15,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -31,6 +33,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.moutamid.vellarentapp.R;
+import com.moutimid.vellarentapp.adapter.ImageAdapter;
 import com.moutimid.vellarentapp.dailogues.CalenderDialogClass;
 import com.moutimid.vellarentapp.helper.Config;
 import com.moutimid.vellarentapp.model.UserModel;
@@ -41,6 +44,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import io.github.glailton.expandabletextview.ExpandableTextView;
@@ -50,6 +54,7 @@ public class VillaDetailsActivity extends AppCompatActivity {
     Button map;
     ImageView favourite_img, unfavourite_img, image;
     String token_admin;
+    RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +67,7 @@ public class VillaDetailsActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(Color.WHITE);
         }
+        recyclerView = findViewById(R.id.recyclerView);
         image = findViewById(R.id.image);
         map = findViewById(R.id.show_map);
         unfavourite_img = findViewById(R.id.unfavourite);
@@ -90,6 +96,11 @@ public class VillaDetailsActivity extends AppCompatActivity {
         TextView house_rules = findViewById(R.id.house_rules);
         TextView pet_friendly = findViewById(R.id.pet_friendly);
         TextView smoke_friendly = findViewById(R.id.smoke_friendly);
+        TextView no_of_persons = findViewById(R.id.no_of_persons);
+        TextView distance = findViewById(R.id.distance);
+        distance.setText(Stash.getString("distance") + " km away from you");
+        no_of_persons.setText("Available for " + villaModel.no_of_persons + " persons");
+        showImagesInRecyclerView();
         if (villaModel.getHouseRules() != null) {
             house_rules.setVisibility(View.VISIBLE);
         } else {
@@ -105,7 +116,7 @@ public class VillaDetailsActivity extends AppCompatActivity {
         } else {
             smoke_friendly.setVisibility(View.GONE);
         }
-         TextView propertyAmenitiesTitle = findViewById(R.id.property_amenities_title);
+        TextView propertyAmenitiesTitle = findViewById(R.id.property_amenities_title);
         LinearLayout dryerLayout = findViewById(R.id.dryer_layout);
         LinearLayout furnishedLayout = findViewById(R.id.furnished_layout);
         LinearLayout equippedKitchenLayout = findViewById(R.id.equipped_kitchen_layout);
@@ -315,6 +326,30 @@ public class VillaDetailsActivity extends AppCompatActivity {
         );
         jsObjRequest.setRetryPolicy(policy);
         requestQueue.add(jsObjRequest);
+    }
+
+    private void showImagesInRecyclerView() {
+        // Retrieve Villa models from Stash
+
+        if (villaModel != null) {
+            // Process the Villa models and display images in RecyclerView
+            List<String> imageUrls = new ArrayList<>();
+
+            Map<String, String> images = villaModel.getImages();
+            if (images != null) {
+                for (String imageUrl : images.values()) {
+                    imageUrls.add(imageUrl);
+                }
+            }
+            Log.d("dataaaa", imageUrls.toString());
+            recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+            // Now you can use imageUrls to display images in your RecyclerView
+            // Use your RecyclerView adapter to show images (similar to the ImageAdapter in your previous code)
+            ImageAdapter imageAdapter = new ImageAdapter(imageUrls);
+            recyclerView.setAdapter(imageAdapter);
+            imageAdapter.notifyDataSetChanged();
+        }
     }
 
 }

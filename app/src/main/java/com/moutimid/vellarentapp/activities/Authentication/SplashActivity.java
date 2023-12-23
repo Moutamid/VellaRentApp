@@ -31,7 +31,7 @@ public class SplashActivity extends AppCompatActivity {
 
 // Set the status bar background color to white
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(Color.WHITE);
+            getWindow().setStatusBarColor(0x743193AA);
         }
         setContentView(R.layout.activity_splash);
 
@@ -39,11 +39,11 @@ public class SplashActivity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.logo);
         ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(
                 imageView,
-                PropertyValuesHolder.ofFloat("scaleX", 3.9F),
+                PropertyValuesHolder.ofFloat("scaleX", 2.8F),
 
-                PropertyValuesHolder.ofFloat("scaleY", 3.9F)
+                PropertyValuesHolder.ofFloat("scaleY", 2.8F)
         );
-        objectAnimator.setDuration(2000);
+        objectAnimator.setDuration(1000);
         objectAnimator.start();
         new Handler().postDelayed(this::goToApp, splashInterval);
     }
